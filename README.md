@@ -4,7 +4,7 @@ bandBook is a social media app similar in core functionality to Facebook.
 ## Core Features:
 1. Add/Remove friends
 1. Make posts
-1. See, comment on, and like friend's posts
+1. See, comment on, and like friends' posts
 1. Signup emails
 1. Edit profile
 1. OAuth with Facebook
