@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+radiohead:
+  name: radiohead
+  email: thom@gmail.com
+  location: United Kingdom
+  started: 1985
+  genre: art rock
+  influence: Pink Floyd
+
+coldplay:
+  name: coldplay
+  email: coldplay@email.com
+  location: United Kingdom
+  started: 1991
+  genre: alternative rock
+  influence: The Verve

@@ -1,0 +1,6 @@
+post1:
+  id: 1
+  content: "Lorem ipsum"
+  user_id: 1
+
+

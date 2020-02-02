@@ -1,0 +1,24 @@
+<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: :off %>
+</div>
+
+  <div class="field">
+    <%= f.label :started %><br />
+    <%= f.select :started, (Time.zone.now.year - 50)..(Time.zone.now.year) %>
+</div>  
+
+  <div class="field">
+    <%= f.label :influence %><br />
+    <%= f.text_field :influence, autocomplete: "influence" %>
+</div>
+
+  <div class="field">
+    <%= f.label :genre %><br />
+    <%= f.text_field :genre, autocomplete: "genre" %>
+</div>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location, autocomplete: "location" %>
+</div>
