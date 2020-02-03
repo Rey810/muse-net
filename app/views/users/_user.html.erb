@@ -1,0 +1,12 @@
+<% unless user == current_user %>
+    <li class='user'>
+        <%= user.name %>
+        <% if current_user.friends?(user) %>
+            <%= render 'remove_friend_form', user: user %>
+        <% elsif current_user.pending_friendships.include?(user) %>
+            <button>Friend Request Sent</button>
+        <% else %>  
+            <%= render 'add_friend_form', user: user %>
+        <% end %>
+    </li>
+<% end %>

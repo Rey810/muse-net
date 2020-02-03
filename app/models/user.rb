@@ -13,4 +13,9 @@ class User < ApplicationRecord
   has_many :friendship_requests,                    dependent: :destroy
   # the users who requests were sent to 
   has_many :pending_friendships, through: :friendship_requests, source: :to_user
+
+  #checks if user is included in the list of friends for current_user
+  def friends?(user)
+    friends.include?(user)
+  end
 end
