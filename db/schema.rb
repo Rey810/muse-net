@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_103623) do
+ActiveRecord::Schema.define(version: 2020_02_03_083035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_103623) do
     t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id", "user_id"], name: "index_comments_on_post_id_and_user_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_103623) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["to_user_id"], name: "index_friendship_requests_on_to_user_id"
+    t.index ["user_id", "to_user_id"], name: "index_friendship_requests_on_user_id_and_to_user_id", unique: true
     t.index ["user_id"], name: "index_friendship_requests_on_user_id"
   end
 
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_103623) do
     t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["friend_id", "user_id"], name: "index_friendships_on_friend_id_and_user_id", unique: true
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_103623) do
     t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", unique: true
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end

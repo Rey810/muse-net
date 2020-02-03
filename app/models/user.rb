@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :comments,                               dependent: :destroy
   has_many :friendships,                            dependent: :destroy
   has_many :friends, through: :friendships
+  # the friendship request details
   has_many :friendship_requests,                    dependent: :destroy
+  # the users who requests were sent to 
   has_many :pending_friendships, through: :friendship_requests, source: :to_user
 end
