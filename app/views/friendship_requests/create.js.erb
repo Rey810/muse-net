@@ -1,0 +1,2 @@
+$("#add_<%= id_user(@requested_user) %>")
+    .html("<%= escape_javascript(render('users/undo_request_form', user: @requested_user)) %>")

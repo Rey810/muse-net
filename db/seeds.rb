@@ -35,3 +35,13 @@ User.create!(
     password:               pw,
     password_confirmation:  pw
 )
+
+User.create!(
+    name:                   'Bonobo',
+    email:                  'bonobo@email.com',
+    influence:              'Just the vibe of life',
+    location:               'USA',
+    started:                2000,
+    password:               pw,
+    password_confirmation:  pw
+)

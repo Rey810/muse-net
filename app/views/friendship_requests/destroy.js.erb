@@ -1,0 +1,2 @@
+$("#undo_add_<%= id_user(@requested_user) %>")
+    .html("<%= escape_javascript(render('users/add_friend_form', user: @requested_user)) %>")
