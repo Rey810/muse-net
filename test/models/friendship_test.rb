@@ -4,10 +4,9 @@ class FriendshipTest < ActiveSupport::TestCase
   def setup
     @user = users(:radiohead)
     @friend = users(:coldplay)
-    @friendship = friendships(:one)
   end
 
-  test "user should be able to add a friend" do
+  test "user should be able to add a friendship" do
     assert_difference '@user.friends.count', 1 do 
       @user.friendships.create(friend_id: @friend.id)
     end
