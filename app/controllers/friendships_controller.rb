@@ -1,14 +1,16 @@
 class FriendshipsController < ApplicationController
-    #This is all for CREATING FRIENDSHIPS. WHAT TO DO WHEN USER CLICKS "ACCEPT" FRIEND REQUEST
-#    def create
-#        @requested_friend = User.find(params[:to_user])
-#
-#        if !current_user.nil? && !@requested_friend.nil? 
-#            make_friendship(current_user, @requested_friend)
-#        else
-#            flash[:notice] = "It seems your friend doesn't actually exist :("
-#            redirect_back(fallback_location: root_path)
-#        end
-#    end
+    def create
+        @requestor = User.find(params[:friend_id])
 
+        if !current_user.nil? && !@requestor.nil? 
+            Friendship.make_friendship(current_user, @requestor)
+            FriendshipRequest.delete_request(current_user, @requestor)
+            flash[:success] = "You are now friends!"
+            redirect_back(fallback_location: root_path)
+        else
+            flash[:notice] = "It seems your friend doesn't actually exist :("
+            redirect_back(fallback_location: root_path)
+        end
+
+    end
 end

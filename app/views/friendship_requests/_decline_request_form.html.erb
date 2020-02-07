@@ -1,0 +1,3 @@
+    <%= form_for(FriendshipRequest.find_by(user_id: friendship_request.user, to_user_id: current_user), html: { method: :delete }) do |f| %>
+        <%= f.submit "Decline Request", class: 'decline friend-button' %>
+    <% end %>

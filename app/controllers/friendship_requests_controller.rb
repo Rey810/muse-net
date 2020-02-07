@@ -1,9 +1,15 @@
 class FriendshipRequestsController < ApplicationController
+
+  def index
+    @friendship_requests = FriendshipRequest.where(to_user: current_user)
+  end
+
+
   def create
     @requested_user = User.find(params[:to_user_id])
     
     if !current_user.nil? && !@requested_user.nil?
-      send_friend_request(current_user, @requested_user)
+      FriendshipRequest.send_friend_request(current_user, @requested_user)
       respond_to do |format|
         format.html { redirect_back(fallback_location: root_path) }
         format.js
@@ -16,8 +22,10 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def destroy
-    @requested_user = User.find(params[:to_user_id])
-    @friendship_request = current_user.friendship_requests.find_by(to_user_id: params[:to_user_id])
+    #creates an instance for use in the destroy.js (for undoing a friend request)
+    @requested_user = User.find(params[:to_user_id]) if params[:to_user_id]
+
+    @friendship_request = FriendshipRequest.find(params[:id])
     @friendship_request.destroy
     
     respond_to do |format|

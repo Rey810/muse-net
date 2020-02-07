@@ -14,11 +14,14 @@
     </div>
 
     <div class="friend_requests">
-      <% if any_friend_requests?(current_user) %>
-        You have <%= num_of_friendship_requests %> 
-        <%= "friend request".pluralize(num_of_friendship_requests) %>
-      <% else %>
-        No friend requests
+      <% if user_signed_in? %>
+        <% if current_user.any_friend_requests? %>
+          You have <%= current_user.num_of_friendship_requests  %> 
+          <%= "friend request".pluralize  (current_user.num_of_friendship_requests) %>
+        <% else %>
+          No friend requests
+        <% end %>
       <% end %>
+    </div>
     
 </div>

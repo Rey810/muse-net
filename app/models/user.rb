@@ -18,4 +18,12 @@ class User < ApplicationRecord
   def friends?(user)
     friends.include?(user)
   end
+
+  def num_of_friendship_requests
+        FriendshipRequest.where(to_user: self).count
+  end
+
+  def any_friend_requests?
+        FriendshipRequest.exists?(to_user: self)
+  end
 end
