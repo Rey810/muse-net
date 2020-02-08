@@ -10,10 +10,12 @@ class FriendshipRequestsController < ApplicationController
     
     if !current_user.nil? && !@requested_user.nil?
       FriendshipRequest.send_friend_request(current_user, @requested_user)
+
       respond_to do |format|
         format.html { redirect_back(fallback_location: root_path) }
         format.js
       end
+      
       flash[:success] = "Your friend request has been sent!"
     else
       flash[:notice] = "It seems you can't add this person as a friend."

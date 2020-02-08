@@ -1,0 +1,4 @@
+<% if !@friendship_request.nil? %>
+    $("#new_friendship").html('<div>Accepted</div>')
+    $("#edit_friendship_request_<%= @friendship_request.id %>").remove()
+<% end %>

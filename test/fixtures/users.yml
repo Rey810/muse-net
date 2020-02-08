@@ -1,17 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 radiohead:
-  name: radiohead
+  name: Radiohead
   email: thom@gmail.com
   location: United Kingdom
   started: 1985
   genre: art rock
   influence: Pink Floyd
-
+  encrypted_password: password
+   
 coldplay:
-  name: coldplay
+  name: Coldplay
   email: coldplay@email.com
   location: United Kingdom
   started: 1991
   genre: alternative rock
   influence: The Verve
+   
+bonobo:
+  name: Bonobo
+  email: bonobo@email.com
+  influence: Just the vibe of life
+  location: USA
+  started: 2000
+
