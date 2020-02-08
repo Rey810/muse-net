@@ -13,4 +13,10 @@ class PostTest < ActiveSupport::TestCase
   test "post contains content" do
     assert @post.content, "Lorem ipsum"
   end
+
+  test "user owns another post after it is created" do
+    assert_difference '@user.posts.count', 1 do
+      @user.posts.create(content: "Lorem ipsum")
+    end
+  end
 end

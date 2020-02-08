@@ -1,25 +1,22 @@
-<div id="container">
+<div id="user_nav">
 
-  <div id="user_nav">
+  <div class="auth_status">   
+    <% if user_signed_in? %>
+      <div class='signed_in_as'>Signed in as <%= current_user.name %>. Not you?</div>
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in",  new_user_session_path %>
+    <% end %> 
+  </div>
 
-    <div class="auth_status">   
-      <% if user_signed_in? %>
-        <div class='signed_in_as'>Signed in as <%= current_user.name %>. Not you?</div>
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in",  new_user_session_path %>
-      <% end %> 
-    </div>
-
-    <div class="friend_requests">
-      <% if user_signed_in? %>
-        <% if current_user.any_friend_requests? %>
-          You have <%= current_user.num_of_friendship_requests  %> 
-          <%= "friend request".pluralize  (current_user.num_of_friendship_requests) %>
-        <% else %>
-          No friend requests
-        <% end %>
+  <div class="friend_requests">
+    <% if user_signed_in? %>
+      <% if current_user.any_friend_requests? %>
+        You have 
+          <%= link_to friendship_requests_path do %>
+            <%= current_user.pluralized_friendship_requests_to_string %>
+          <% end %>
       <% end %>
-    </div>
-    
+    <% end %>
+  </div>
 </div>

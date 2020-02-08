@@ -20,7 +20,13 @@ class User < ApplicationRecord
   end
 
   def num_of_friendship_requests
-        FriendshipRequest.where(to_user: self).count
+    FriendshipRequest.where(to_user: self).count
+  end
+
+  def pluralized_friendship_requests_to_string
+    num = self.num_of_friendship_requests
+    friend_requests = "friend request".pluralize(num)
+    string = "#{num} #{friend_requests}"
   end
 
   def any_friend_requests?

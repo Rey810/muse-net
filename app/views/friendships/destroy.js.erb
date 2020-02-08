@@ -1,0 +1,3 @@
+<% if !@friendship_to_destroy.nil? %>
+    $("#edit_friendship_<%= @friendship_to_destroy.id %>").html('<div>Removed</div>')
+<% end %>

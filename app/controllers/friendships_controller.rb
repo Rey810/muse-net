@@ -19,4 +19,15 @@ class FriendshipsController < ApplicationController
         end
 
     end
+
+    def destroy
+        @friendship_to_destroy = Friendship.find(params[:id])
+        @friendship_to_destroy.destroy
+
+        respond_to do |format|
+            format.html { redirect_back(fallback_location: root_path) }
+            format.js
+        end
+        
+    end
 end
