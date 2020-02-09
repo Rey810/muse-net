@@ -1,0 +1,2 @@
+$("#post_count").html('Posts: <%= escape_javascript(current_user.posts.count.to_s) %>')
+$("#post_<%= @post.id %>").html('<%= escape_javascript(flash[:notice]) %>')

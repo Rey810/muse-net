@@ -1,0 +1,7 @@
+<%= pluralizer(current_user.friends.count, "Friend") %>
+<%= render @friendships %>
+
+<div id='post_count'> 
+    Posts: <%= current_user.posts.count %>
+</div>
+<%= render @posts %>

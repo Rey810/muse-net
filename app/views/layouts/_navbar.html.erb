@@ -3,6 +3,8 @@
   <div class="auth_status">   
     <% if user_signed_in? %>
       <div class='signed_in_as'>Signed in as <%= current_user.name %>. Not you?</div>
+      <%= link_to "Home", root_path %>
+      <%= link_to "Profile", current_user %>
       <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
     <% else %>
       <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in",  new_user_session_path %>
@@ -14,7 +16,7 @@
       <% if current_user.any_friend_requests? %>
         You have 
           <%= link_to friendship_requests_path do %>
-            <%= current_user.pluralized_friendship_requests_to_string %>
+            <%= pluralizer(current_user.friendship_requests.count, "friend request") %>
           <% end %>
       <% end %>
     <% end %>

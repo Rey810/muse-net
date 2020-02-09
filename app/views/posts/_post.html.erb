@@ -1,0 +1,7 @@
+<div class='post' id='post_<%= post.id %>'>
+    <%= post.content %>
+    <div class='timestamp'>
+        Posted <%= time_ago_in_words(post.created_at) %> ago.
+    </div>
+    <%= link_to "Delete", post, method: :delete, remote: true %> 
+</div>
