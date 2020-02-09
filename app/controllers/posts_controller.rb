@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         if @post.destroy
-            flash[:notice] = "Post deleted"
+            flash.now[:notice] = "Post deleted"
             respond_to do |format|
                 format.html { redirect_back(fallback_location: root_path) }
                 format.js
