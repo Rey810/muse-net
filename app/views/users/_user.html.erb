@@ -3,11 +3,11 @@
         <%= user.name %>
         <%= user.id %>
         <% if current_user.friends?(user) %>
-            <%= render 'remove_friend_form', user: user %>
+            <%= render 'shared/remove_friend_form', user: user %>
         <% elsif current_user.pending_friendships.include?(user) %>
-            <%= render 'undo_request_form', user: user %>
+            <%= render 'shared/undo_request_form', user: user %>
         <% else %>  
-            <%= render 'add_friend_form', user: user %>
+            <%= render 'shared/add_friend_form', user: user %>
         <% end %>
     </li>
 <% end %>

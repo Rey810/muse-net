@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
         if current_user
             @feed = current_user.feed
             @comments = Comment.all
+            @friendships = current_user.friends
         end
     end
 end

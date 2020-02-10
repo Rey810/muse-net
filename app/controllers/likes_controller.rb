@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
     def create
         @like = Post.find(params[:post_id]).likes.create(user: current_user)
-        
+        @post = Post.find(params[:post_id])
         if @like.save
             respond_to do |format|
                 format.html { flash[:success] = "You liked a post."

@@ -2,4 +2,5 @@
 <% if user_signed_in? %>
     <%= render 'posts/post_form' %>
     <%= render 'shared/feed' %>
+    <%= render @friendships %>
 <% end %>

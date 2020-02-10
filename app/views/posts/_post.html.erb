@@ -8,6 +8,7 @@
         <% if !post.likes.empty? %>
             Likes: <%= post.likes.count %>
         <% end %>
+    </div>
     <div class='like_unlike'>
         <% if !post.likes.exists?(user_id: current_user) %>
             <%= render 'likes/like', post: post  %>
