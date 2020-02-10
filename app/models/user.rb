@@ -24,6 +24,6 @@ class User < ApplicationRecord
   end
 
   def any_friend_requests?
-        FriendshipRequest.exists?(to_user: self)
+    FriendshipRequest.exists?(to_user: self)
   end
 end

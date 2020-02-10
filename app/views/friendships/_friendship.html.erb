@@ -1,2 +1,2 @@
-Name: <%= friendship.friend.name %>
+Name: <%= link_to "#{friendship.friend.name}", user_path(friendship.friend.id) %>
 Influence: <%= friendship.friend.influence %>

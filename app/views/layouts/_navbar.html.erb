@@ -16,7 +16,7 @@
       <% if current_user.any_friend_requests? %>
         You have 
           <%= link_to friendship_requests_path do %>
-            <%= pluralizer(current_user.friendship_requests.count, "friend request") %>
+            <%= pluralizer(current_user.num_of_friendship_requests, "friend request") %>
           <% end %>
       <% end %>
     <% end %>

@@ -4,8 +4,9 @@ class UsersController < ApplicationController
     end
 
     def show
-        @friendships = current_user.friendships
-        @posts = current_user.posts
         @user = User.find(params[:id])
+        @friendships = @user.friendships
+        @posts = @user.posts
+        @comments = Comment.all
     end
 end
