@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
     def create
         @like = Post.find(params[:post_id]).likes.create(user: current_user)
-
+        
         if @like.save
             respond_to do |format|
                 format.html { flash[:success] = "You liked a post."
@@ -15,7 +15,8 @@ class LikesController < ApplicationController
     end
 
     def destroy
-        @like = Like.find_by(post: params[:post_id])
+        @like = Like.find_by(user: params[:id])
+        @post = Post.find(params[:post_id])
 
         if @like.destroy
             respond_to do |format|

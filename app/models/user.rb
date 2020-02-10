@@ -26,4 +26,13 @@ class User < ApplicationRecord
   def any_friend_requests?
     FriendshipRequest.exists?(to_user: self)
   end
+
+  def feed
+    #select the posts from friends
+    #current implementation is clumsy and will be slow with many posts.
+    #When refactoring, try to use a subselect to increase db efficiency
+    #friend_ids = "SELECT friend_id FROM friendships WHERE user_id etc."
+    friend_ids = self.friends.ids
+    Post.where("user_id IN (?) OR user_id = ?", friend_ids, self.id) 
+  end
 end

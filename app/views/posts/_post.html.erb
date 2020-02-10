@@ -1,5 +1,6 @@
 <div class='post' id='post_<%= post.id %>'>
     <%= post.content %>
+    Post by: <%= post.user.name %>
     <div class='timestamp'>
         Posted <%= time_ago_in_words(post.created_at) %> ago.
     </div>
@@ -7,19 +8,21 @@
         <% if !post.likes.empty? %>
             Likes: <%= post.likes.count %>
         <% end %>
-    <div class='like'>
+    <div class='like_unlike'>
         <% if !post.likes.exists?(user_id: current_user) %>
-            <%= link_to 'Like', post_likes_path(post), method: :post%>
+            <%= render 'likes/like', post: post  %>
         <% else %>
-            <%= link_to 'Unlike', post_like_path(post), method: :delete %>
+            <%= render 'likes/unlike', post: post %>
         <% end %>
     </div>
     <% if current_user == @user %>
         <%= link_to "Delete", post, method: :delete, remote: true %>
     <% end %> 
+    <% if !@comments.empty? %>
     <div class='comment'>
         <%= render 'comments/comment_form', post: post %>
     </div>
+    <% end %>
 </div>
 
 <div class='comments' id='post_<%= post.id %>_comments'>

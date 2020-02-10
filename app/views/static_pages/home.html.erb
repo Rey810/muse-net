@@ -1,2 +1,5 @@
 <% provide(:title, "Home") %>
-<%= render 'posts/post_form' if user_signed_in? %>
+<% if user_signed_in? %>
+    <%= render 'posts/post_form' %>
+    <%= render 'shared/feed' %>
+<% end %>
