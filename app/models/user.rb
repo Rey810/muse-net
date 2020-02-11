@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
   has_many :posts,                                  dependent: :destroy
   has_many :likes,                                  dependent: :destroy
@@ -14,6 +14,13 @@ class User < ApplicationRecord
   # the users who requests were sent to 
   has_many :pending_friendships, through: :friendship_requests, source: :to_user
 
+
+  after_create :send_welcome_email
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_now
+  end
+  
   #checks if user is included in the list of friends for current_user
   def friends?(user)
     friends.include?(user)
@@ -34,5 +41,16 @@ class User < ApplicationRecord
     #friend_ids = "SELECT friend_id FROM friendships WHERE user_id etc."
     friend_ids = self.friends.ids
     Post.where("user_id IN (?) OR user_id = ?", friend_ids, self.id) 
+  end
+
+  def self.from_omniauth(auth)
+    #auth is a hash
+    #first_or_create sets the provider and uid fields automatically
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name   # assuming the user model has a name
+      # user.image = auth.info.image # assuming the user model has an image
+    end
   end
 end

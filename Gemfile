@@ -7,6 +7,8 @@ gem 'devise'
 gem 'jquery-rails',             '4.3.1'
 gem 'rails-controller-testing'
 gem 'bootstrap-sass', '3.4.1'
+gem 'omniauth-facebook'
+gem 'figaro'
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'

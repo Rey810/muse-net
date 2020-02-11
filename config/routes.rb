@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root :to => 'static_pages#home'
-  devise_for :users   #sorts out authentication routing
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }  
 
   as :user do
     get  'signin', to: 'devise/sessions#new'
