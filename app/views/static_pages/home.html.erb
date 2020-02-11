@@ -1,5 +1,6 @@
 <% provide(:title, "Home") %>
 <% if user_signed_in? %>
+    <%= render 'shared/user_info' %>
     <%= render 'posts/post_form' %>
     <%= render 'shared/feed' %>
     <%= render @friendships %>

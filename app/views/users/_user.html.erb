@@ -1,5 +1,6 @@
 <% unless user == current_user %>
     <li class='user'>
+        <%= link_to gravatar_for(user, size: 50), user %>
         <%= user.name %>
         <%= user.id %>
         <% if current_user.friends?(user) %>
