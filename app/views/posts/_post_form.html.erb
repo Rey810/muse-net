@@ -1,4 +1,7 @@
 <%= form_for(current_user.posts.build) do |f| %>
     <%= f.text_area :content, placeholder: "Content" %>
+    <span class="picture">
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+     </span>
     <%= f.submit "Submit" %>
 <% end %>

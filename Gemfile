@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.5'
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'  
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'jquery-rails',             '4.3.1'
@@ -57,6 +59,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  gem 'fog', '1.42'
 end
 
 group :test do
