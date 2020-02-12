@@ -8,4 +8,7 @@ class StaticPagesController < ApplicationController
             @friendships = current_user.friends
         end
     end
+
+    def privacy_policy
+    end
 end
