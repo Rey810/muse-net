@@ -1,0 +1,5 @@
+<% if current_user.picture? %>
+  <%= image_tag current_user.picture.url %>
+<% else %>
+  <%= link_to gravatar_for(current_user, size: 200), current_user %>
+<% end %>

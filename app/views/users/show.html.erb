@@ -1,5 +1,6 @@
 <%= provide(:title, @user.name) %>
 <%= pluralizer(current_user.friends.count, "Friend") %>
+<%= link_to "Edit Profile", edit_user_path %>
 <%= render @friendships %>
 
 <div id='post_count'> 

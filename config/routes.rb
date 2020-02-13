@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     post 'signup', to: 'devise/registrations#create'
   end
   
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :friendship_requests,     only: [:index, :create, :destroy]
   resources :friendships,             only: [:create, :destroy]
   resources :posts do

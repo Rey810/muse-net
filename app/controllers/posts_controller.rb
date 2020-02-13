@@ -6,7 +6,7 @@ class PostsController < ApplicationController
             redirect_back(fallback_location: root_path)
         else
             flash[:notice] = "Post unable to be created."
-            render root_path
+            redirect_back(fallback_location: root_path)
         end
     end
 

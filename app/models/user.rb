@@ -19,6 +19,8 @@ class User < ApplicationRecord
   # the users who requests were sent to 
   has_many :pending_friendships, through: :friendship_requests, source: :to_user
 
+  mount_uploader :picture, PictureUploader
+
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_now
   end
