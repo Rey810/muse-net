@@ -1,7 +1,7 @@
 <div id='add_<%= id_user(user) %>'>
     <%= form_for(current_user.friendship_requests.build, remote: true) do |f| %>
         <%= hidden_field_tag :to_user_id, user.id %>
-        <%= f.submit "Add friend", class: "add friend-button" %>
+        <%= f.submit "Add friend", class: "add friend-button btn btn-primary" %>
     <% end %>
 </div>
 
