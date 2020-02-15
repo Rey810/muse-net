@@ -1,9 +1,16 @@
 <%= form_for(current_user.posts.build) do |f| %>
     <%= f.text_area :content, placeholder: "Content" %>
-    <span class="picture">
-        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-     </span>
-    <%= f.submit "Submit" %>
+    <div class='picture'>
+      <label class="btn btn-primary">
+        Add a Picture
+      <span class="picture" style="display:none;">
+          <%= f.file_field :picture, label: "Picture", accept: 'image/jpeg,image/gif,image/png' %>
+       </span>
+       </label>
+    </div>
+    <div class='submit'>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
 <% end %>
 
 <script type="text/javascript">

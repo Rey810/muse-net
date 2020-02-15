@@ -1,5 +1,26 @@
 <% provide(:title, "Home") %>
-<%= render 'shared/user_info' %>
-<%= render 'posts/post_form' %>
-<%= render 'shared/feed' %>
-<%= render @friendships %>
+<div class='user_info'>
+    <h2>Here is your info</h2>
+        <%= render 'shared/user_info', user: current_user %>
+</div>
+<div class='friendships'>
+    <h2>Friendships</h2>
+        <% if current_user.friends.empty? %>
+            <h3>You don't have any friends. Add one <%= link_to "here", users_path %>
+        <% else %>
+            <%= render @friendships %>
+        <% end %>
+</div>
+<div class='post-form'>
+    <h2>Make a Post</h2>
+        <%= render 'posts/post_form' %>
+</div>
+<div class='feed'>
+    <h2>News Feed</h2>
+        <% if current_user.feed.empty? %>
+            <h3>Your feed is empty.</h3>
+        <% else %>
+            <%= render 'shared/feed' %>
+        <% end %>
+</div>
+

@@ -1,11 +1,26 @@
 <%= provide(:title, @user.name) %>
-<%= pluralizer(current_user.friends.count, "Friend") %>
-<%= link_to "Edit Profile", edit_user_path %>
-<%= render @friendships %>
+<% content_for :stylesheets do %>
+    .post_author {display: none}
+<% end %>
 
-<div id='post_count'> 
-    Posts: <%= current_user.posts.count %>
-</div>
+<%= render 'shared/user_info', user: @user %>
+<% if current_user == @user %>
+    <div class='edit_profile'>
+        <%= link_to "Edit Profile", edit_user_path %>
+    </div>
+<% end %>
+<secttion class='friendships'>
+    <div id='friend_count'>
+        <%= pluralizer(@user.friends.count, "Friend") %>:
+    </div>
+    <div class='friends'>
+        <%= render @friendships %>
+    </div>
+</section>
+
+<h2 id='post_count'> 
+    Posts (<%= @user.posts.count %>)
+</h2>
 <div class='posts'>
     <%= render @posts %>
 </div>

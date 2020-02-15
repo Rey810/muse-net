@@ -1,7 +1,11 @@
 <div class='post' id='post_<%= post.id %>'>
-    <%= post.content %>
-    <%= image_tag post.picture.url if post.picture? %>
-    Post by: <%= post.user.name %>
+    <div class='post_author'>
+        <h3><%= post.user.name %></h3>
+    </div>
+    <div class='post_content'>
+        <%= post.content %>
+    </div>
+        <%= image_tag post.picture.url, class:'post_image' if post.picture? %>
     <div class='timestamp'>
         Posted <%= time_ago_in_words(post.created_at) %> ago.
     </div>

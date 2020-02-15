@@ -1,33 +1,38 @@
-<%= form_for(current_user) do |f| %>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-  </div>
+  <div class='field'>
+      <label class="btn btn-primary">
+        Upload new picture...
+            <span class="picture" style="display:none;">
+                <%= f.file_field :picture, label: "Picture", accept: 'image/jpeg,image/gif,image/png' %>
+            </span>
+        </label>
+    </div>
   
   <div class="field">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true, autocomplete: :off %>
   </div>
+
+  <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "email" %>
+  </div>
   
     <div class="field">
-      <%= f.label :started %><br />
+      <%= f.label :started, "When did your group start?*" %><br />
       <%= f.select :started, (Time.zone.now.year - 50)..(Time.zone.now.year) %>
   </div>  
   
     <div class="field">
-      <%= f.label :influence %><br />
+      <%= f.label :influence, "Who's your biggest musical influence?*" %><br />
       <%= f.text_field :influence, autocomplete: "influence" %>
   </div>
   
     <div class="field">
-      <%= f.label :genre %><br />
+      <%= f.label :genre, "What genre defines you?*" %><br />
       <%= f.text_field :genre, autocomplete: "genre" %>
   </div>
   
     <div class="field">
-      <%= f.label :location %><br />
+      <%= f.label :location, "Where are you based?*" %><br />
       <%= f.text_field :location, autocomplete: "location" %>
   </div>
-
-  <%= f.submit "Update Profile", class: 'btn btn-primary' %>
-<% end %>

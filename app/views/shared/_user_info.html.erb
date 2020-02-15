@@ -1,1 +1,10 @@
-<%= render 'shared/profile_pic' %>
+<%= render 'shared/profile_pic', user: user %>
+    <h4><%= user.name %></h4>
+<% if !user.genre.empty? %>
+    <h4>Genre</h4>
+    <%= user.genre %>
+<% end %>
+<% if !user.location.empty? %>
+    <h4>Location</h4>
+    <%= user.location %>
+<% end %>
