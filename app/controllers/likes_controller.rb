@@ -1,8 +1,9 @@
 class LikesController < ApplicationController
     def create
         @like = Post.find(params[:post_id]).likes.create(user: current_user)
-        @post = Post.find(params[:post_id])
+        
         if @like.save
+            @post = Post.find(params[:post_id])
             respond_to do |format|
                 format.html { flash[:success] = "You liked a post."
                                 redirect_back(fallback_location: root_path) }
@@ -15,10 +16,10 @@ class LikesController < ApplicationController
     end
 
     def destroy
-        @like = Like.find_by(user: params[:id])
-        @post = Post.find(params[:post_id])
+        @like = Like.find_by(id: params[:id], post: params[:post_id])
 
         if @like.destroy
+            @post = Post.find(params[:post_id])
             respond_to do |format|
                 format.html { flash[:success] = "You unliked a post."
                                 redirect_back(fallback_location: user_path(user_path)) }

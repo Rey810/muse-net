@@ -1,4 +1,4 @@
 $('#unlike_<%= @post.id %>')
     .html('<%= escape_javascript(render('likes/like', post: @post)) %>')
-$('.total_likes')
-    .replaceWith('<div class="total_likes">Likes: <%= escape_javascript(@post.likes.count.to_s) %></div>' )
+$('#total_likes_for_post_<%= @post.id %>')
+    .replaceWith('<div id="total_likes_for_post_<%= @post.id %>"> Likes: <%= escape_javascript(@post.likes.count.to_s) %></div>' )

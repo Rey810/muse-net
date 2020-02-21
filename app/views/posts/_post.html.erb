@@ -9,7 +9,7 @@
     <div class='timestamp'>
         Posted <%= time_ago_in_words(post.created_at) %> ago.
     </div>
-    <div class='total_likes'>
+    <div id='total_likes_for_post_<%= post.id %>'>
         <% if !post.likes.empty? %>
             Likes: <%= post.likes.count %>
         <% end %>
