@@ -31,11 +31,9 @@ class FriendshipRequestsController < ApplicationController
     @friendship_request.destroy
     
     respond_to do |format|
-      format.html { 
-        flash[:success] = "Your friend request has been undone!"
-        redirect_back(fallback_location: root_path) 
-      }
+      format.html { redirect_back(fallback_location: root_path) }
       format.js
     end
+    flash[:success] = "Your friend request has been undone!"
   end
 end

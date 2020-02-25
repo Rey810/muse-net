@@ -1,5 +1,5 @@
 <div id='undo_add_<%= id_user(user) %>'>
-    <%= form_for(current_user.friendship_requests.find_by(to_user_id: user), html: { method:                :delete }, remote: true) do |f| %>
+    <%= form_for(current_user.friendship_requests.find_by(to_user_id: user), html: { method:    :delete }, remote: true) do |f| %>
         <%= hidden_field_tag :to_user_id, user.id %>
         <%= f.submit "Undo Request", class: 'undo friend-button btn btn-primary' %>
     <% end %>

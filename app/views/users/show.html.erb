@@ -1,7 +1,4 @@
 <%= provide(:title, @user.name) %>
-<% content_for :stylesheets do %>
-    .post_author {display: none}
-<% end %>
 
 <%= render 'shared/user_info', user: @user %>
 <% if current_user == @user %>
