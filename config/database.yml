@@ -15,3 +15,12 @@ test:
   pool: 5
   username: rey810
   password: Carpediem321.
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_prod
+  host: localhost
+  pool: 5
+  username: rey810
+  password: Carpediem321.
