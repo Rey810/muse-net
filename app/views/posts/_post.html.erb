@@ -22,7 +22,7 @@
         <% end %>
     </div>
     <% if current_user == @user %>
-        <%= link_to "Delete", post, method: :delete, remote: true %>
+        <%= button_to "Delete", post, method: :delete, remote: true %>
     <% end %> 
     <% if !@comments.empty? %>
     <div class='comment'>
