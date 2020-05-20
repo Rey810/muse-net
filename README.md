@@ -1,5 +1,5 @@
-# bandBook
-bandBook is a social media app similar in core functionality to Facebook.
+# MUSENET
+Musenet is a social media app similar in core functionality to Facebook.
 
 ## Core Features:
 1. Add/Remove friends
